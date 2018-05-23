@@ -1,0 +1,38 @@
+{
+  "name": "react-auth0-lock",
+  "author": "Jan Hartmann <kontakt@janhartmann.dk>",
+  "license": "MIT",
+  "version": "1.0.0",
+  "description": "React wrapper for Auth0 Lock using React Context API",
+  "keywords": ["react", "react-component", "auth0", "auth", "context-api"],
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/janhartmann/react-auth0-lock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/janhartmann/react-auth0-lock/issues"
+  },
+  "scripts": {
+    "build": "babel src/ --out-dir lib/"
+  },
+  "peerDependencies": {
+    "react": "^16.3.2",
+    "auth0-lock": "^11.6.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.0.0-beta.47",
+    "@babel/core": "^7.0.0-beta.47",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.47",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.47",
+    "@babel/preset-env": "^7.0.0-beta.47",
+    "@babel/preset-react": "^7.0.0-beta.47",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^8.0.0-beta",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.8.2"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.1"
+  }
+}
