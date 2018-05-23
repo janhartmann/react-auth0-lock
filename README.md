@@ -93,19 +93,19 @@ export default class App extends React.Component {
 
 The `AuthConsumer´ component exposes a child function with the following properties:
 
-#### `auth.isAuthenticated`
+#### `auth.isAuthenticated` {Boolean}
 
 Whether the user is currently authenticated.
 
-#### `auth.login()`
+#### `auth.login()` {Function}
 
 A function which displays the Auth0 Lock interface.
 
-#### `auth.logout(returnTo)`
+#### `auth.logout(returnTo)` {Function}
 
 A function which logs out a user and redirects to the provided URL.
 
-#### `auth.lock`
+#### `auth.lock` {Object}
 
 A reference for the original Auth0 Lock instance. You can access any method or property on the Auth0 Lock object using this.
 
