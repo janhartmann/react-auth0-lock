@@ -26,10 +26,7 @@ import { AuthProvider } from "react-auth0-lock";
 import App from "./App";
 
 ReactDOM.render(
-  <AuthProvider
-    clientId={AUTH0_CLIENT_ID}
-    domain={AUTH0_DOMAIN}
-  >
+  <AuthProvider clientId={AUTH0_CLIENT_ID} domain={AUTH0_DOMAIN}>
     <App />
   </AuthProvider>,
   document.getElementById("root")
@@ -81,7 +78,8 @@ export default class App extends React.Component {
             </p>
           ) : (
             <p>
-              The user is not authenticated. <button onClick={() => login()}>Login</button>
+              The user is not authenticated.{" "}
+              <button onClick={() => login()}>Login</button>
             </p>
           );
         }}
@@ -96,6 +94,22 @@ The `AuthConsumer´ component exposes a child function with the following proper
 #### `auth.isAuthenticated` {Boolean}
 
 Whether the user is currently authenticated.
+
+#### `auth.accessToken` {String}
+
+The access token for the authenticated user.
+
+#### `auth.idToken` {String}
+
+The Open ID Connect token for the authenticated user.
+
+#### `auth.expiresAt` {Integer}
+
+The timestamp in seconds for when the token expires. Note that the `AuthProvider` will automatically renew tokens.
+
+#### `auth.profile` {Object}
+
+The user info profile object from the autenticated user.
 
 #### `auth.login()` {Function}
 
@@ -121,9 +135,7 @@ import { withAuth } from "react-auth0-lock";
 class App extends React.Component {
   render() {
     const { auth } = this.props;
-    return (
-      <p>Is the user authenticated? {auth.isAuthenticated}</p>
-    );
+    return <p>Is the user authenticated? {auth.isAuthenticated}</p>;
   }
 }
 
