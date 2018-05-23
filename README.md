@@ -134,6 +134,6 @@ export default withAuth(App);
 
 Features, bugfixes and alike is always welcome and appreciated.
 
-## Licence
+## License
 
 MIT
