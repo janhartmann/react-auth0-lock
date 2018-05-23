@@ -18,21 +18,23 @@ The library exposes three components; a provider, a consumer and a higher-order-
 
 This component should be mounted as far out as you need it. In many cases, this would mean as part of the composition root of your application, example:
 
-    import React from "react";
-    import ReactDOM from "react-dom";
-    import { AuthProvider } from "react-auth0-lock";
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import { AuthProvider } from "react-auth0-lock";
 
-    import App from "./App";
+import App from "./App";
 
-    ReactDOM.render(
-      <AuthProvider
-        clientId={AUTH0_CLIENT_ID}
-        domain={AUTH0_DOMAIN}
-      >
-        <App />
-      </AuthProvider>,
-      document.getElementById("root")
-    );
+ReactDOM.render(
+  <AuthProvider
+    clientId={AUTH0_CLIENT_ID}
+    domain={AUTH0_DOMAIN}
+  >
+    <App />
+  </AuthProvider>,
+  document.getElementById("root")
+);
+```
 
 The `AuthProvider` component has the following properties:
 
@@ -60,32 +62,34 @@ The key which to store the `access_token`, `id_token` and `expires_at` from the 
 
 Used for consuming authentication _anywhere_ in your application. This should always be used nested of a `AuthProvider`. It is a component, which children is invoked, using a function with the authentication result.
 
-    import React from "react";
-    import ReactDOM from "react-dom";
-    import { AuthConsumer } from "react-auth0-lock";
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import { AuthConsumer } from "react-auth0-lock";
 
-    export default class App extends React.Component {
-      render() {
-        return (
-          <AuthConsumer>
-            {({ isAuthenticated, accessToken, logout, login }) => {
-              return isAuthenticated ? (
-                <p>
-                  The user is authenticated!
-                  <button onClick={() => logout("http://localhost:8080")}>
-                    Logout
-                  </button>
-                </p>
-              ) : (
-                <p>
-                  The user is not authenticated. <button onClick={() => login()}>Login</button>
-                </p>
-              );
-            }}
-          </AuthConsumer>
-        );
-      }
-    }
+export default class App extends React.Component {
+  render() {
+    return (
+      <AuthConsumer>
+        {({ isAuthenticated, accessToken, logout, login }) => {
+          return isAuthenticated ? (
+            <p>
+              The user is authenticated!
+              <button onClick={() => logout("http://localhost:8080")}>
+                Logout
+              </button>
+            </p>
+          ) : (
+            <p>
+              The user is not authenticated. <button onClick={() => login()}>Login</button>
+            </p>
+          );
+        }}
+      </AuthConsumer>
+    );
+  }
+}
+```
 
 The `AuthConsumer´ component exposes a child function with the following properties:
 
@@ -109,20 +113,22 @@ A reference for the original Auth0 Lock instance. You can access any method or p
 
 A higher-order-component (HOC) which injects the the above `auth` object from `AuthConsumer` into the wrapped component.
 
-    import React from "react";
-    import ReactDOM from "react-dom";
-    import { withAuth } from "react-auth0-lock";
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import { withAuth } from "react-auth0-lock";
 
-    class App extends React.Component {
-      render() {
-        const { auth } = this.props;
-        return (
-          <p>Is the user authenticated? {auth.isAuthenticated}</p>
-        );
-      }
-    }
+class App extends React.Component {
+  render() {
+    const { auth } = this.props;
+    return (
+      <p>Is the user authenticated? {auth.isAuthenticated}</p>
+    );
+  }
+}
 
-    export default withAuth(App);
+export default withAuth(App);
+```
 
 ## Contribution
 
