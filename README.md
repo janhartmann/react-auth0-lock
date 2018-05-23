@@ -2,14 +2,6 @@
 
 A simple React wrapper for Auth0 Lock using React Context API.
 
-## Installation
-
-    // Using NPM
-    npm install react-auth0-lock
-
-    // Using Yarn
-    yarn add react-auth0-lock
-
 ## Usage
 
 The library exposes three components; a provider, a consumer and a higher-order-component (HOC).
